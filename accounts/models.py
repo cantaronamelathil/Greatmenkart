@@ -1,6 +1,6 @@
 from email.policy import default
 # from sys import last_traceback
-from types import NoneType
+# from types import NoneType
 # from typing_extensions import Self
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser,BaseUserManager
