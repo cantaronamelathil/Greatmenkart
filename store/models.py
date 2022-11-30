@@ -1,7 +1,7 @@
 from email.policy import default
 from enum import unique
 from itertools import product
-from tkinter import CASCADE
+# from tkinter import CASCADE
 # from sre_constants import CATEGORY
 # from unicodedata import category
 from django.db import models
