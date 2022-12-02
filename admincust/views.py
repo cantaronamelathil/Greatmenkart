@@ -73,7 +73,7 @@ def dashboard(request):
         'data':data,
         'labels':labels
     }
-    return render(request,'Admincust/admindash.html',context)
+    return render(request,'admincust/admindash.html',context)
 
 def active_users(request):
     if "key" in request.GET:
