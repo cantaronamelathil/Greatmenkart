@@ -20,7 +20,7 @@ from .forms import RegistrationForm, UserForm, UserProfileForm,VerifyForm
 from . import verify
 
 
-@login_required(login_url = 'login')
+# @login_required(login_url = 'login')
 # Create your views here.
 def login(request):
      if request.method =='POST':
@@ -91,7 +91,7 @@ def login(request):
                          return redirect(nextPage)
                     
                except:
-                    return redirect('dashboard')
+                    return redirect('my_orders')
           else:
                messages.error(request,'Invalid login credentials')
                return redirect('login')   
@@ -140,7 +140,7 @@ def register(request):
           'form':form,
      }
      return render(request,'accounts/register.html',context)  
-@login_required(login_url = 'login')
+# @login_required(login_url = 'login')
 def otp(request,id):
      if request.method == 'POST':
           user=Accounts.objects.get(id=id)
