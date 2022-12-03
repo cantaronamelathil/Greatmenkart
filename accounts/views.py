@@ -29,16 +29,11 @@ def login(request):
           user = auth.authenticate(email=email,password=password)
           
           if user is not None:
-               
-               
-               
                try:
                     cart = cart.objects.get(cart_id=_cart_id(request))
                     is_cart_item_exists = Cartitem.objects.filter(cart=cart).exists()
                     if is_cart_item_exists:
                          cart_item = Cartitem.objects.filter(cart=cart)
-                         
-                         
                          product_variation = []
                          for item in cart_item:
                               variation = item.variation.all()
@@ -69,10 +64,7 @@ def login(request):
                                    
                                    for item in cart_item:
                                         item.user = user
-                                        item.save()     
-                              
-                              
-                    
+                                        item.save()        
                except:
                      pass
                          
@@ -94,8 +86,8 @@ def login(request):
                # except:
                     # return redirect('my_orders')
           else:
-               messages.error(request,'Invalid login credentials')
-               return redirect('login')   
+               messages.error(request,'Invalid login credentials') 
+          
      return render(request,'accounts/login.html')
  
 @login_required(login_url = 'login')
