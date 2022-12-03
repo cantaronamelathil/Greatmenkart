@@ -29,7 +29,8 @@ from coupon.forms import CouponForm
 def check_admin(user):
     return user.is_admin
 
-def dashboard(request):
+@user_passes_test(check_admin, login_url='/admincust/adminsignin/')
+def admindashboard(request):
     New=0
     Accepted=0
     Completed=0
@@ -75,6 +76,7 @@ def dashboard(request):
     }
     return render(request,'admincust/admindash.html',context)
 
+@user_passes_test(check_admin, login_url='/admincust/adminsignin/')
 def active_users(request):
     if "key" in request.GET:
         search_key = request.GET.get('key') if request.GET.get('key') is not None else ''
@@ -89,7 +91,7 @@ def active_users(request):
 
 
 
-
+@user_passes_test(check_admin, login_url='/admincust/adminsignin/')
 #  @login_required(login_url='adminlogin')
 def block_user(request, user_id):
     user = Accounts.objects.get(pk=user_id)
@@ -98,7 +100,7 @@ def block_user(request, user_id):
     print('success')
     return redirect("active_users")
 
-
+@user_passes_test(check_admin, login_url='/admincust/adminsignin/')
 # @login_required(login_url='adminlogin')
 def unblock_user(request, user_id):
     user = Accounts.objects.get(pk=user_id)
@@ -128,7 +130,7 @@ def adminsignin(request):
         print(1)
         return render(request, 'admincust/adminsiginin.html')
 
-
+@user_passes_test(check_admin, login_url='/admincust/adminsignin/')
 def adminlogout(request):
     auth.logout(request)
     return redirect('adminsignin')

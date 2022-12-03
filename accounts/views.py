@@ -19,6 +19,8 @@ from orders.models import Order,OrderProduct
 from .forms import RegistrationForm, UserForm, UserProfileForm,VerifyForm
 from . import verify
 
+
+@login_required(login_url = 'login')
 # Create your views here.
 def login(request):
      if request.method =='POST':
@@ -138,7 +140,7 @@ def register(request):
           'form':form,
      }
      return render(request,'accounts/register.html',context)  
-
+@login_required(login_url = 'login')
 def otp(request,id):
      if request.method == 'POST':
           user=Accounts.objects.get(id=id)
