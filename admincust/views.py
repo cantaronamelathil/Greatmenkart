@@ -27,9 +27,10 @@ from coupon.forms import CouponForm
 # @login_required(login_url='adminlogin')
 
 def check_admin(user):
+    print(user.is_admin)
     return user.is_admin
 
-@user_passes_test(check_admin, login_url='/admincust/adminsignin/')
+# @user_passes_test(check_admin, login_url='/admincust/adminsignin/')
 def admindashboard(request):
     New=0
     Accepted=0
